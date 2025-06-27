@@ -48,4 +48,4 @@ ios/Runner/GoogleService-Info.plist
 
 # 🔧 CI/CD
 codemagic.yaml.secret
-.firebaserc/
+.firebaserc
