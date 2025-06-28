@@ -1,32 +1,31 @@
 
-
-import 'package:whatsapp/features/auth/screan/ckeck_user.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:async';
+import 'package:whatsapp/features/auth/screan/ckeck_user.dart';
 
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  final Duration delay;
+  const SplashScreen({Key? key, this.delay = const Duration(seconds: 3)}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
   void initState() {
     super.initState();
-    // محاكاة تحميل البيانات أو الانتظار لثوانٍ
-    Future.delayed(Duration(seconds: 3), () {
-      // الانتقال إلى الشاشة التالية
+    Timer(widget.delay, () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => CheckUser()), // الشاشة التالية
       );
     });
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: Column(

@@ -7,13 +7,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'OnGenerateRoutes.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
+import 'dart:io';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await dotenv.load(fileName: ".my_env.env");
+  if (!Platform.environment.containsKey('FLUTTER_TEST')) {
+    await dotenv.load(fileName: ".my_env.env");
+  }
+
 
   runApp(const MyApp()); // ✅ إزالة ProviderScope من هنا
 }
